@@ -9,6 +9,8 @@ script:
   #- pip install --system --ignore-installed --prefix=/usr --root=AppDir taskcoach
   # Install from source
   - python2 setup.py install --prefix=/usr --root=AppDir
+  - mkdir -p AppDir/usr/share/icons/hicolor/48x48/apps
+  - cp icons.in/taskcoach.png AppDir/usr/share/icons/hicolor/48x48/apps/taskcoach.png
 
 AppDir:
   path: ./AppDir
@@ -16,8 +18,7 @@ AppDir:
   app_info:
     id: com.github.fluks.taskcoach
     name: taskcoach appimage
-    # Use taskcoach icon?
-    icon: utilities-terminal
+    icon: taskcoach
     version: 0.1.0
     # Set the python executable as entry point
     exec: usr/bin/python2
