@@ -11,6 +11,13 @@ script:
   - python2 setup.py install --prefix=/usr --root=AppDir
   - mkdir -p AppDir/usr/share/icons/hicolor/48x48/apps
   - cp icons.in/taskcoach.png AppDir/usr/share/icons/hicolor/48x48/apps/taskcoach.png
+  # Looks like AppImage does not bundle libfreetype, even if it is
+  # explicitely included because it caused trouble with some
+  # software. Of course NOT including it also causes trouble, at least
+  # with Task Coach. I tested this on Ubuntu 16, 18 and 20 and it
+  # seems to work.
+  - mkdir -p AppDir/usr/lib/x86_64-linux-gnu
+  - cp /usr/lib/x86_64-linux-gnu/libfreetype.so.6 AppDir/usr/lib/x86_64-linux-gnu/
 
 AppDir:
   path: ./AppDir
